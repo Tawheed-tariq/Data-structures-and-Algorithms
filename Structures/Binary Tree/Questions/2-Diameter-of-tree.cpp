@@ -15,6 +15,9 @@ template <typename T>
             right = NULL;
         }
 };
+/*The diameter of tree is the number of nodes in the longest 
+    path of the tree between two end nodes 
+*/
 
 pair<int,int> diameter(TreeNode<int> *root){
     pair<int, int> ans; // first => diameter, second=>height
