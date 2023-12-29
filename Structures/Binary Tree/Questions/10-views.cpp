@@ -27,7 +27,7 @@ vector<int> getTopView(BinaryTreeNode<int> *root)
         return ans;
     }
     map<int,int> topNode;
-    queue<pair<BinaryTreeNode<int> *, int> > q;
+    queue<pair<BinaryTreeNode<int> *, int> > q; //stores node and horizontal distance
     q.push(make_pair(root, 0));
 
     while(!q.empty()){

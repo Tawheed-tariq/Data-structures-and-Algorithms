@@ -14,6 +14,10 @@ template <typename T>
             right = NULL;
         }
 };
+// A binary tree is a sum tree if the value of each node is equal to 
+// the sum of nodes present in the left and the right subtree. 
+// An empty tree is a sum tree with 0 sums. A leaf node is also considered 
+// a sum tree with a sum equal to the value of the leaf node.
 
 pair<bool,int> isSum(TreeNode<int> *root){
     pair<bool,int> ans;
