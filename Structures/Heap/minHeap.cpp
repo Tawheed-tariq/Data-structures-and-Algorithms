@@ -8,8 +8,8 @@ class heap{
     int size;
     int *arr;
     heap(){
-        size = 100000;
-        arr = new int[size];
+        size = 0;
+        arr = new int[100000];
     }
     void insetion(int info){
         size++;
@@ -27,10 +27,16 @@ class heap{
     }
 
     void deleteRootNode(){
-        arr[1] = arr[size];
-        size--;
+        if(size == 0){
+            cout << "underflow"<< endl;
+            return;
+        }
+        arr[1] = arr[size];  //replace root node with last node
+        size--;  //delete last node
+
+        //heapify the first node
         int i = 1;
-        while(i > size){
+        while(i < size){
             int left = 2*i, right = 2*i + 1;
             if(left <= size && arr[left] < arr[i]){
                 swap(arr[i],arr[left]);
@@ -51,7 +57,7 @@ class heap{
         if(left <= size && arr[left] < arr[smallest]){
             smallest = left;
         }
-        if(right <= size && arr[right] < arr[smallest]){
+        else if(right <= size && arr[right] < arr[smallest]){
             smallest = right;
         }
         if(smallest != i){

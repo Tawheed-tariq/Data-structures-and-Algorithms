@@ -30,7 +30,7 @@ class heap{
         arr[1] = arr[size];
         size--;
         int i = 1;
-        while(i > size){
+        while(i < size){
             int left = 2*i, right = 2*i + 1;
             if(left <= size && arr[left] > arr[i]){
                 swap(arr[i],arr[left]);
