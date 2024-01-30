@@ -8,8 +8,8 @@ class heap{
     int size;
     int *arr;
     heap(){
-        size = 100000;
-        arr = new int[size];
+        size = 0;
+        arr = new int[100000];
     }
     void insetion(int info){
         size++;
