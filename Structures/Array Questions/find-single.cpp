@@ -19,6 +19,9 @@
 //     Similarly , if we see , a^a^a......... (even times)=0 and a^a^a........(odd times)=a
 
 
+#include<iostream>
+#include<bits/stdc++.h>
+using namespace std;
 
 class Solution {
 public:
