@@ -30,7 +30,7 @@ pair<int,int> diameter(TreeNode<int> *root){
     int op1 = left.first; //diameter of left subtree
     int op2 = right.first; //diameter of right sub tree
     int op3 = left.second + right.second; // height of subtree
-    ans.first = max(op1,max(op2,op3));
+    ans.first = max(op1,max(op2,op3)); //max of all the three
     ans.second = max(left.second,right.second)+1 ;
     return ans;
 }
