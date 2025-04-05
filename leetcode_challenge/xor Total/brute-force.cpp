@@ -1,3 +1,9 @@
+//time complexity O(2^n *n )
+//space complexity O(n)
+// The above code is a brute-force solution to find the XOR total of all subsets of an array.
+// It uses recursion to generate all subsets and calculates the XOR of each subset.
+// The xorTotal function calculates the XOR of all elements in a given array.
+
 class Solution {
     public:
         int xorTotal(vector<int> arr){
