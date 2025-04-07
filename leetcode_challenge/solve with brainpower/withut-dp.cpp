@@ -1,19 +1,17 @@
 class Solution {
     public:
-        void solve(vector<vector<int>>& questions, int ind, int &max, long long &realMax){
+        int solve(vector<vector<int>>& questions, int ind, int &maxi){
             if(ind >= questions.size()){
-                if(max > realMax) realMax = max;
-                return;
+                return maxi;
             }
-            solve(questions, ind+1, max, realMax);
-            max = max + questions[ind][0];
-            solve(questions, ind+questions[ind][1] + 1, max , realMax);
-            max = max - questions[ind][0];
+            int noPick = solve(questions, ind+1, maxi);
+            maxi = maxi + questions[ind][0];
+            int pick = solve(questions, ind+questions[ind][1] + 1, maxi);
+            maxi = maxi - questions[ind][0];
+            return max(pick, noPick);
         }
         long long mostPoints(vector<vector<int>>& questions) {
             int max = 0;
-            long long realMax = 0;
-            solve(questions, 0, max, realMax);
-            return realMax;
+            return solve(questions, 0, max);
         }
     };
