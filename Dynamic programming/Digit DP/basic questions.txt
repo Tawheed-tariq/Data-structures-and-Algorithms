@@ -1,0 +1,6 @@
+Count numbers from 1 to N with digit sum ≤ K
+
+Count numbers with no consecutive repeated digits
+
+Count palindromic numbers in a range
+
