@@ -1,25 +1,14 @@
-#include<bits/stdc++.h>
-using namespace std;
-
-
-int fib(int n, vector<int> &dpArray){
-        if(n <= 1)
-                return n;
-        if(dpArray[n] != -1) //memoization
-                return dpArray[n];
-        dpArray[n] = fib(n-1, dpArray) + fib(n-2, dpArray);
-        return dpArray[n];
-}
-
-
-int main()
-{
-        int n;
-        cin >> n;
-        vector<int> dpArray(n+1);
-        for(int i = 0; i < n+1; i++){
-                dpArray[i] = -1;
-        }
-        cout << fib(n, dpArray) << endl;
-}
-
+class Solution {
+        public:
+            int solve(int n, vector<int> &dp){
+                if(n == 1 || n == 0)
+                    return dp[n] = n;
+                if(dp[n] != -1) return dp[n];
+        
+                return dp[n] = solve(n-1, dp) + solve(n-2, dp);
+            }
+            int fib(int n) {
+                vector<int> dp(n+1, -1);
+                return solve(n, dp);
+            }
+        };
