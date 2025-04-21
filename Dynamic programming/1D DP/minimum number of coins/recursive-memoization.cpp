@@ -1,30 +1,22 @@
-#include<iostream>
-#include<bits/stdc++.h>
-using namespace std;
-int solveRec(vector<int> &num, int x, vector<int> &dp){
-    if(x == 0)
-        return 0;
-    if(x < 0)
-        return INT_MAX;
-    if(dp[x] != -1)
-        return dp[x];
-    int mini = INT_MAX;
-    for(int i = 0; i < num.size(); i++){
-        int ans = solveRec(num, x - num[i], dp);
-        if(ans != INT_MAX){
-            mini = min(1+ans, mini);
+class Solution {
+    public:
+        int solve(vector<int>& coins, int amount, vector<int> &dp){
+            if(amount == 0)
+                return 0;
+            if(amount < 0) return INT_MAX;
+    
+            if(dp[amount] != -1) return dp[amount];
+    
+            int mini = INT_MAX;
+            for(int &coin: coins){
+                int ans = solve(coins, amount - coin, dp);
+                if(ans != INT_MAX) mini = min(mini, 1+ ans); //utilize currect coin
+            }
+            return dp[amount] = mini;
         }
-    }
-    dp[x] = mini;
-    return mini;
-}
-int minimumElements(vector<int> &num, int x)
-{
-    vector<int> dp(x + 1, -1);
-    int ans = solveRec(num, x, dp);
-    if(ans == INT_MAX){
-        return -1;
-    }
-    else 
-        return ans;
-}
+        int coinChange(vector<int>& coins, int amount) {
+            vector<int> dp(amount+1, -1);
+            int ans= solve(coins, amount, dp);
+            return ans != INT_MAX? ans : -1;
+        }
+    };
