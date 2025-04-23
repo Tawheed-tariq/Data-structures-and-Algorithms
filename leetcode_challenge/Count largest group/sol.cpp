@@ -1,25 +1,20 @@
 class Solution {
     public:
-        int digitSum(int x){
-            int sum = 0;
-            while(x>0){
-                int digit = x%10;
-                sum+=digit;
-                x /= 10;
-            }
-            return sum;
-        }
         int countLargestGroup(int n) {
-            unordered_map<int, int> mp;
+            int groups[37] = {}; // digit sum can be at most 9+9+9+9=36 for n <= 9999
             int max_val = 0, count = 0;
             for(int i = 1; i <= n; i++){
-                int s = digitSum(i);
-                mp[s]++;
-                max_val  = max(max_val, mp[s]);
+                int s = 0, x = i;
+                while(x>0){
+                    int digit = x%10;
+                    s+=digit;
+                    x /= 10;
+                }
+                groups[s]++;
+                max_val  = max(max_val, groups[s]);
             }
-            cout << max_val;
-            for(auto ele:mp){
-                if(ele.second == max_val)
+            for(int &ele:groups){
+                if(ele == max_val)
                     count++;
             }
             return count;
