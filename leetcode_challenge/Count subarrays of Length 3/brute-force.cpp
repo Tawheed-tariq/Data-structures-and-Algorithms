@@ -5,7 +5,7 @@ class Solution {
             int right = 2;
             int count = 0;
             while(right < nums.size()){
-                count = (float)(nums[left]+nums[right]) == (float)nums[right-1]/2? ++count : count;
+                count = (nums[left]+nums[right])*2 == nums[right-1]? ++count : count;
                 left++;
                 right++;
             }
