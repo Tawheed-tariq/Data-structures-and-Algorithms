@@ -1,22 +1,21 @@
-int Solution::solve(vector<int> &A, int B) {
-    int count = 0;
-    int xr = 0;
-    map<int, int> mp;
-    mp[xr]++;
-    for(int i = 0; i < A.size(); i++){
-        // prefix XOR till index i:
-        xr = xr ^ A[i];
+class Solution {
+  public:
+    long subarrayXor(vector<int> &arr, int k) {
+        int count = 0, xori = 0;
+        unordered_map<int, int> mp;
         
-        //By formula: x = xr^B:
-        int x = xr ^ B;
+        for(int i = 0; i < arr.size(); i++){
+            xori ^= arr[i];
+            
+            if(xori == k) count++;
+            
+            if(mp.find(xori ^ k) != mp.end()){
+                count += mp[xori^k];
+            }
+            
+            mp[xori]++;
+        }
+        return count;
         
-        // add the occurrence of xr^k
-        // to the count:
-        count += mp[x];
-        
-        // Insert the prefix xor till index i
-        // into the map:
-        mp[xr]++;
     }
-    return count;
-}
+};
