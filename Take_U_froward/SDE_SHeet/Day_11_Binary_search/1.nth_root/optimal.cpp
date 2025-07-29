@@ -1,24 +1,25 @@
-int pow(int mid, int n, int m) {
-    long long ans = 1;
-    for (int i = 1; i <= n; i++) {
-        ans = ans * mid;
-        if (ans > m) return 2;
-    }
-    if (ans == m) return 1;
-    return 0;
-}
+class Solution {
+  public:
+  long long pow(int x, int n){
+    if(n == 0) return 1;
+    if(n == 1) return x;
 
-int NthRoot(int n, int m) {
-  int low = 1, high = m;
-  while(low <= high){
-    int mid = low + (high - low)/2;
-    int mid_n = pow(mid, n, m);
-    if(mid_n == 1)
-      return mid;
-    else if(mid_n == 0)
-        low = mid +1;
-    else
-      high = mid - 1;
+    long long ans = pow(x, n/2);
+    if(n%2 == 0) return ans*ans;
+    return ans*ans*x;
   }
-  return -1;
-}
+    int nthRoot(int N, int M) {
+        // Code here
+        int low = 0, high = M;
+        while(low <= high){
+            int mid = low + (high - low)/2;
+            long long ans = pow(mid, N);
+            if(ans == M) return mid;
+            else if(ans > M) high = mid -1;
+            else low = mid+1;
+        }
+       return -1;
+    }
+};
+
+
